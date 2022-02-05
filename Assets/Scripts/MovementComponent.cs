@@ -24,14 +24,15 @@ public class MovementComponent : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     Vector2 lookInput = Vector2.zero;
 
-    public float aimSensitivity;
+    [SerializeField]
+    float aimSensitivity = 0.5f;
 
     public readonly int movementXHash = Animator.StringToHash("MovementX");
     public readonly int movementYHash = Animator.StringToHash("MovementY");
-    public readonly int isJumpingHash = Animator.StringToHash("isJumping");
-    public readonly int isRunningHash = Animator.StringToHash("isRunning");
-    public readonly int isFiringHash = Animator.StringToHash("isFiring");
-    public readonly int isReloadingHash = Animator.StringToHash("isReloading");
+    public readonly int isJumpingHash = Animator.StringToHash("IsJumping");
+    public readonly int isRunningHash = Animator.StringToHash("IsRunning");
+    public readonly int isFiringHash = Animator.StringToHash("IsFiring");
+    public readonly int isReloadingHash = Animator.StringToHash("IsReloading");
 
     private void Awake()
     {
@@ -115,17 +116,7 @@ public class MovementComponent : MonoBehaviour
         lookInput = value.Get<Vector2>();
         //if we aim up, down, adjust animations to have a mask that will let us properly animate aim
     }
-    public void OnReload(InputValue value)
-    {
-        playerController.isReloading = value.isPressed;
-        playerAnimator.SetBool(isReloadingHash, playerController.isReloading);
-    }
-    public void OnFire(InputValue value)
-    {
-        playerController.isFiring = value.isPressed;
-        playerAnimator.SetBool(isFiringHash, playerController.isFiring);
-        //set up firing animation
-    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
