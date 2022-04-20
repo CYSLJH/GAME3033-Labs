@@ -6,7 +6,7 @@ public class AK47Component : WeaponComponent
 {
     Vector3 hitLocation;
     protected override void FireWeapon()
-    {     
+    {
 
         if (weaponStats.bulletsInClip > 0 && !isReloading)
         {
@@ -24,7 +24,7 @@ public class AK47Component : WeaponComponent
                 Debug.DrawRay(mainCamera.transform.position, hitDirection.normalized * weaponStats.fireDistance, Color.red, 1);
             }
         }
-        else if(weaponStats.bulletsInClip <= 0)
+        else if (weaponStats.bulletsInClip <= 0)
         {
             //trigger a reload when no bullets left in clip
             weaponHolder.StartReloading();
@@ -37,6 +37,8 @@ public class AK47Component : WeaponComponent
     {
         IDamageable damageable = hitInfo.collider.GetComponent<IDamageable>();
         damageable?.TakeDamage(weaponStats.damage);
+
+        //print(hitInfo.collider.name);
     }
 
     private void OnDrawGizmos()

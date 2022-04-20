@@ -1886,7 +1886,7 @@ GameObject:
   - component: {fileID: 7400053495775908358}
   - component: {fileID: 7400053495775908359}
   - component: {fileID: 7400053495775908360}
-  - component: {fileID: 7400053495775908378}
+  - component: {fileID: 988897066648338267}
   m_Layer: 5
   m_Name: UIController
   m_TagString: Untagged
@@ -1975,7 +1975,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7400053495775908378
+--- !u!114 &988897066648338267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1984,11 +1984,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7400053495775908361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f57e82daf40a9944bd59924c351c4ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 88035224994085a4882878cdab9598c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   GameCanvas: {fileID: 0}
-  PauseCanvas: {fileID: 0}
   InventoryCanvas: {fileID: 7280153099054776967}
 --- !u!1001 &7754594290163618224
 PrefabInstance:
@@ -1997,6 +1996,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7280153099116072985}
     m_Modifications:
+    - target: {fileID: 1121440752991997983, guid: 176664a2c5453284a93b8056769ba265, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121440752991997983, guid: 176664a2c5453284a93b8056769ba265, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8717932408202872160, guid: 176664a2c5453284a93b8056769ba265, type: 3}
       propertyPath: m_Name
       value: ItemSlot

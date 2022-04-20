@@ -24,6 +24,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damage)
     {
+        print("taking damage");
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
