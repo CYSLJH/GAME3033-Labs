@@ -43,67 +43,56 @@ public class MovementComponent : MonoBehaviour
 
     private void Update()
     {
-        //camera x-axis rotation
-        followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.x * aimSensitivity, Vector3.up);
-
-        followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.y * aimSensitivity, Vector3.left);
-
-        var angles = followTransform.transform.localEulerAngles;
-        angles.z = 0;
-
-        var angle = followTransform.transform.localEulerAngles.x;
-
-        float min = -60;
-        float max = 70.0f;
-        float range = max - min;
-        float offsetToZero = 0 - min;
-        float aimAngle = followTransform.transform.localEulerAngles.x;
-        aimAngle = (aimAngle > 180) ? aimAngle - 360 : aimAngle;
-        float val = (aimAngle + offsetToZero) / (range);
-        playerAnimator.SetFloat(verticalAimHash, val);
-
-
-        if (angle > 180 && angle < 300)
+        if(!playerController.isPaused)
         {
-            angles.x = 300;
+            //camera x-axis rotation
+            followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.x * aimSensitivity, Vector3.up);
+
+            followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.y * aimSensitivity, Vector3.left);
+
+            var angles = followTransform.transform.localEulerAngles;
+            angles.z = 0;
+
+            var angle = followTransform.transform.localEulerAngles.x;
+
+            float min = -60;
+            float max = 70.0f;
+            float range = max - min;
+            float offsetToZero = 0 - min;
+            float aimAngle = followTransform.transform.localEulerAngles.x;
+            aimAngle = (aimAngle > 180) ? aimAngle - 360 : aimAngle;
+            float val = (aimAngle + offsetToZero) / (range);
+            playerAnimator.SetFloat(verticalAimHash, val);
+
+
+            if (angle > 180 && angle < 300)
+            {
+                angles.x = 300;
+            }
+            else if (angle < 180 && angle > 70)
+            {
+                angles.x = 70;
+            }
+
+            followTransform.transform.localEulerAngles = angles;
+
+            //rotate the player to face where we are looking
+            transform.rotation = Quaternion.Euler(0, followTransform.transform.rotation.eulerAngles.y, 0);
+            followTransform.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
+
+            if (playerController.isJumping) return;
+            if (!(inputVector.magnitude > 0)) moveDirection = Vector3.zero;
+
+            moveDirection = transform.forward * inputVector.y + transform.right * inputVector.x;
+            float currentSpeed = playerController.isRunning ? runSpeed : walkSpeed;
+
+            Vector3 movementDirection = moveDirection * (currentSpeed * Time.deltaTime);
+
+            transform.position += movementDirection;
         }
-        else if (angle < 180 && angle > 70)
-        {
-            angles.x = 70;
-        }
 
-        followTransform.transform.localEulerAngles = angles;
-
-        //rotate the player to face where we are looking
-        transform.rotation = Quaternion.Euler(0, followTransform.transform.rotation.eulerAngles.y, 0);
-        followTransform.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
-
-        if (playerController.isJumping) return;
-        if (!(inputVector.magnitude > 0)) moveDirection = Vector3.zero;
-
-        moveDirection = transform.forward * inputVector.y + transform.right * inputVector.x;
-        float currentSpeed = playerController.isRunning ? runSpeed : walkSpeed;
-
-        Vector3 movementDirection = moveDirection * (currentSpeed * Time.deltaTime);
-
-        transform.position += movementDirection;
 
     }
-    /* float groundedAngle = 45;
-     private void FixedUpdate()
-     {
-         RaycastHit hit;
-         //Debug.DrawRay(new Vector3(transform.position.x, GetComponent<Collider>().bounds.extents.y, transform.position.z), -Vector3.up, Color.red, Time.deltaTime, true);
-         if (Physics.Raycast(new Vector3(transform.position.x,GetComponent<Collider>().bounds.extents.y, transform.position.z),-Vector3.up,out hit, 0.000000001f, LayerMask.GetMask("Ground")))
-         {
-             //if (hit.transform || hit.transform.gameObject)
-             if (Vector3.Angle(hit.normal, Vector3.up) < groundedAngle)
-             {
-                 playerController.isJumping = false;
-                 playerAnimator.SetBool(isJumpingHash, false);
-             }
-         }
-     }*/
 
     public void OnMovement(InputValue value)
     {

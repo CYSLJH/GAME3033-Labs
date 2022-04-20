@@ -12,6 +12,10 @@ public class LevelMusic : MonoBehaviour
         {
             AudioManager.PlayMusic(AudioManager.Music.MainMenu);
         }
+        if (SceneManager.GetActiveScene().name == "Credits")
+        {
+            AudioManager.PlayMusic(AudioManager.Music.MainMenu);
+        }
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
             AudioManager.PlayMusic(AudioManager.Music.Game);

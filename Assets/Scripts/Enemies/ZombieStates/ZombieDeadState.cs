@@ -14,6 +14,7 @@ public class ZombieDeadState : ZombieStates
     // Start is called before the first frame update
     public override void Start()
     {
+        AudioManager.PlaySound(AudioManager.Sound.ZombieAttack);
         base.Start();
         ownerZombie.zombieNavMeshAgent.isStopped = true;
         ownerZombie.zombieNavMeshAgent.ResetPath();

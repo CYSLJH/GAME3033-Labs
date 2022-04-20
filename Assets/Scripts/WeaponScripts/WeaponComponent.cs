@@ -89,12 +89,14 @@ public class WeaponComponent : MonoBehaviour
     {
         weaponStats.bulletsInClip--;
         //print(weaponStats.bulletsInClip);
+        AudioManager.PlaySound(AudioManager.Sound.Firing);
     }
 
     public virtual void StartReloading()
     {
         isReloading = true;
         ReloadWeapon();
+        AudioManager.PlaySound(AudioManager.Sound.Reloading);
     }
     public virtual void StopReloading()
     {
