@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool isRunning;
     public bool isAiming;
     public bool inInventory;
+    public bool isPaused;
 
     public InventoryComponent inventory;
     public GameUIController uiController;
@@ -47,9 +48,34 @@ public class PlayerController : MonoBehaviour
 
     private void OpenInventory(bool open)
     {
-        if(open)
+        if (open)
         {
             uiController.EnableInventoryMenu();
+        }
+        else
+        {
+            uiController.EnableGameMenu();
+        }
+    }
+
+    public void OnPause(InputValue value)
+    {
+        if (isPaused)
+        {
+            isPaused = false;
+        }
+        else
+        {
+            isPaused = true;
+        }
+        PauseGame(isPaused);
+    }
+
+    private void PauseGame(bool open)
+    {
+        if (open)
+        {
+            uiController.EnablePauseMenu();
         }
         else
         {

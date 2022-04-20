@@ -11,7 +11,8 @@
                     "id": "a720fdef-e421-4353-b871-dd8392723c18",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "3690f410-1a1b-4d91-8d78-1a771be861af",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Run",
@@ -27,7 +29,8 @@
                     "id": "46dc5641-9edb-46bb-809b-606bb0759c2a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Aim",
@@ -35,7 +38,8 @@
                     "id": "a1fa1b8b-6922-4810-acb1-4c6ef70c20a6",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Look",
@@ -43,7 +47,8 @@
                     "id": "6c8ff79f-b6de-4b74-b319-0413df2e79ea",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Reload",
@@ -51,7 +56,8 @@
                     "id": "cad877f8-e577-49bd-9b83-2c7a7729d071",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Fire",
@@ -59,7 +65,8 @@
                     "id": "cdc27862-cde7-4ab2-be89-e315ad82c6ff",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Inventory",
@@ -67,7 +74,17 @@
                     "id": "530f8255-541c-4814-a712-8d65ce9a3766",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "d58ec7aa-d7ed-4670-a058-84f092d9a38b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -195,11 +212,22 @@
                 {
                     "name": "",
                     "id": "dca360f2-670e-4a68-b08f-ca8f0d101dd1",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ffc4d008-cd45-4f34-b21e-846686016b2d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
