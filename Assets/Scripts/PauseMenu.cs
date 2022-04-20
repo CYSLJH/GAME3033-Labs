@@ -8,9 +8,6 @@ using System.Linq;
 
 public class PauseMenu : GameHUDWidget
 {
-    [SerializeField] private Button ResumeButton;
-    [SerializeField] private Button MenuButton;
-
     private PlayerController PlayerController;
 
     private void Awake()
@@ -26,5 +23,11 @@ public class PauseMenu : GameHUDWidget
     private void OnDisable()
     {
         Time.timeScale = 1;
+    }
+
+    public void MainMenu()
+    {
+        OnDisable();
+        SceneManager.LoadScene("MainMenu");
     }
 }
