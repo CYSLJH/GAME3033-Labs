@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum WeaponType
-{ 
+{
     None, Pistol, MachineGun
 }
 
 public enum WeaponFiringPattern
-{ 
+{
     SemiAuto, FullAuto, ThreeShotBurst, FiveShotBurst, PumpAction
 }
 
 [System.Serializable]
-public struct WeaponStats {
+public struct WeaponStats
+{
     public WeaponType weaponType;
     public WeaponFiringPattern firingPattern;
     public string weaponName;
@@ -49,9 +50,14 @@ public class WeaponComponent : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    public void Initialize(WeaponHolder _weaponHolder)
+    public void Initialize(WeaponHolder _weaponHolder, WeaponScriptable weaponScriptable)
     {
         weaponHolder = _weaponHolder;
+
+        if(weaponScriptable)
+        {
+            weaponStats = weaponScriptable.weaponStats;
+        }
     }
 
     public virtual void StartFiringWeapon()
@@ -80,7 +86,7 @@ public class WeaponComponent : MonoBehaviour
     }
 
     protected virtual void FireWeapon()
-    {        
+    {
         weaponStats.bulletsInClip--;
         //print(weaponStats.bulletsInClip);
     }
